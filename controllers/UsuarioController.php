@@ -45,8 +45,7 @@ class usuarioController
         header("Location: ".base_url.'usuario/registro');
     }
     
-    public function login() {
-        
+    public function login() {        
         if (isset($_POST)) {
             $usuario = new usuario();
             $usuario->setEmail($_POST['email']);
@@ -56,15 +55,14 @@ class usuarioController
             
             if ($identity && is_object($identity)) {
                 $_SESSION['identity'] = $identity;
-                if($identity->role == 'admin') {
+               
+                if($identity->rol == 'admin') {
                     $_SESSION['admin'] = true;
                 }
             } else {
-                $_SESSION['error_login'] = 'Identificación fallida!!';
-            }
-            
            
-            
+                $_SESSION['error_login'] = 'Identificación fallida!!';
+            }                                   
         }
         header("Location:".base_url);
     }

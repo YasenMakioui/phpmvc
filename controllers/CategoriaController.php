@@ -1,8 +1,29 @@
 <?php
 
+require_once 'models/categoria.php';
+
 class categoriaController {
     public function index() {
-        echo "Controlador Categoria, Accion index";
+        Utils::isAdmin();
+        $categoria = new categoria();
+        $categorias = $categoria->getAll();
+        require_once 'views/categoria/index.php';
+    }
+    
+    public function crear() {
+        Utils::isAdmin();
+        require_once 'views/categoria/crear.php';
+    }
+    
+    public function save() {
+        Utils::isAdmin();
+        
+        if(isset($_POST) && isset($_POST['nombre'])) {
+            $categoria = new categoria();
+            $categoria->setNombre($_POST['nombre']);
+            $categoria->save();
+        }
+        header("Location:".base_url."categoria/index");
     }
 } 
 

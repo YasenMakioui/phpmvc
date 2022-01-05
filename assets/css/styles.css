@@ -39,6 +39,17 @@ a:hover {
     background: white;
 }
 
+table {
+    text-align: center;
+    width: 100%;
+    border: 1px solid #555;  
+    border-collapse: collapse;
+}
+
+td, th {
+  border: 1px solid #ccc;    
+  padding: 2px;
+}
 
 /*HEADER*/
 
@@ -172,13 +183,16 @@ a:hover {
 }
 
 /*FORMS*/
-
+.form_container {
+    width: 50%;
+}
 
 label,
 input[type="text"],
 input[type="password"],
 input[type="email"],
-select {
+input[type="number"]
+select, textarea {
     display: block;
     width: 95%;
     margin-top: 2px;
@@ -190,7 +204,8 @@ select {
 input[type="text"],
 input[type="password"],
 input[type="email"],
-select {
+input[type="number"]
+select, textarea {
     border: 1px solid #c9c9c9;
     box-shadow: 0px 0px 2px #ccc inset;
     background: white;
@@ -225,6 +240,12 @@ button, .button {
     background-color: #33ae3d;
     color: white !important;
     text-decoration: none;
+}
+
+.button-small {
+    width: 120px;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 label,
