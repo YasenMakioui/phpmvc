@@ -31,6 +31,11 @@ a:hover {
     color: red;
 }
 
+.thumb {
+   width: 100px;
+   
+}
+
 /*CONTAINER*/
 #container {
     width: 80%;

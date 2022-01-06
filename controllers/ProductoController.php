@@ -32,6 +32,7 @@ class productoController {
             //$imagen = isset($_POST['imagen']) ? $_POST['imagen'] : false;
 
             if ($nombre && $descripcion && $precio && $stock && $categoria) {
+                
                 $producto = new producto();
                 $producto->setNombre($nombre);
                 $producto->setDescripcion($descripcion);
@@ -40,23 +41,33 @@ class productoController {
                 $producto->setCategoria_id($categoria);
 
                 //Guardar la imagen
+                if (isset($_FILES['imagen'])) {
+                    $file = $_FILES['imagen'];
+                    $filename = $file['name'];
+                    $mimetype = $file['type'];
 
-                $file = $_FILES['imagen'];
-                $filename = $file['name'];
-                $mimetype = $file['type'];
+                    if ($mimetype == "image/jpg" || $mimetype == 'image/jpeg' || $mimetype == 'image/png' || $mimetype = 'image/gif') {
+                        if (!is_dir('uploads/images')) {
+                            mkdir('uploads/images', 0777, true);
+                        }
 
-                if ($mimetype == "image/jpg" || $mimetype == 'image/jpeg' || $mimetype == 'image/png' || $mimetype = 'image/gif') {
-                    if (!is_dir('uploads/images')) {
-                        mkdir('uploads/images', 0777, true);
+                        move_uploaded_file($file['tmp_name'], 'uploads/images/' . $filename);
+
+                        $producto->setImagen($filename);
                     }
+                }
 
-                    move_uploaded_file($file['tmp_name'], 'uploads/images' . $filename);
-
-                    $producto->setImagen($filename);
+                if (isset($_GET['id'])) {
+                    $id = $_GET['id'];
+                    $producto->setId($id);
+                    
+                    $save = $producto->edit();
+                } else {
+                    $save = $producto->save();
                 }
 
 
-                $save = $producto->save();
+
                 if ($save) {
 
                     $_SESSION['producto'] = 'complete';

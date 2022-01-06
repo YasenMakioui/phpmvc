@@ -102,6 +102,27 @@ class producto {
         return false;
     }
     
+    public function edit() {
+        
+        $sql = "UPDATE productos SET nombre ='{$this->getNombre()}', descripcion='{$this->getDescripcion()}', precio={$this->getPrecio()},stock={$this->getStock()}, categoria_id={$this->getCategoria_id()} ";
+        if($this->getImagen() != null) {
+            
+            $sql .= ", imagen='{$this->getImagen()}'";
+        }
+        $sql .= "WHERE id={$this->getId()};";
+        
+        
+        
+        $save = $this->db->query($sql);
+       
+        
+        
+        if($save) {
+            return true;
+        }
+        return false;
+    }
+    
     public function delete() {
         $sql = "DELETE FROM productos WHERE id ={$this->id}";
         $delete = $this->db->query($sql);
