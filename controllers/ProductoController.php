@@ -5,8 +5,22 @@ require_once 'models/producto.php';
 class productoController {
 
     public function index() {
-        //renderizar vista
+        $producto = new producto();
+        $productos = $producto->getRandom(6);
+        
         require_once 'views/producto/destacados.php';
+    }
+    
+    public function ver() {
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $producto = new producto();
+            $producto->setId($id);
+            $pro = $producto->getOne();
+            
+        } 
+        
+        require_once 'views/producto/ver.php';
     }
 
     public function gestion() {

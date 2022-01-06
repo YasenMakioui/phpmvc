@@ -33,7 +33,7 @@
                 </li>
                 <?php while($cat = $categorias->fetch_object()):?>
                  <li>
-                    <a href="#">
+                     <a href="<?=base_url?>categoria/ver&id=<?=$cat->id?>">
                         <?=$cat->nombre?>
                     </a>
                 </li>

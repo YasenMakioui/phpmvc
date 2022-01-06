@@ -33,6 +33,7 @@ if (isset($_GET['controller'])) {
 }else {
     show_error();
     exit();
+   
 }
 
 if (class_exists($nombre_controlador)) {
