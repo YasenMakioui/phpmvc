@@ -161,6 +161,10 @@ td, th {
     min-height: 500px;
 }
 
+#lateral #carrito {
+    min-height: 100px;
+}
+
 #lateral h3 {
     display: block;
     color: #222;
@@ -373,6 +377,10 @@ button {
     text-align: center;
 }
 
+.img_carrito {
+    height: 80px;
+}
+
 /*FOOTER*/
 
 #footer {
@@ -382,4 +390,15 @@ button {
     color: rgb(0, 0, 0);
     clear: both;
     border-top: 5px solid #01B1EA;
+}
+
+/*carrito*/
+
+.total-carrito {
+    float: right;
+}
+
+.button-pedido {
+    display: block;
+    width: 100px;
 }

@@ -10,6 +10,7 @@ require_once './controllers/PedidoController.php';
 require_once './controllers/ProductoController.php';
 require_once './controllers/UsuarioController.php';
 require_once './controllers/ErrorController.php';
+require_once './controllers/CarritoController.php';
 require_once './views/layout/sidebar.php';
 
 
