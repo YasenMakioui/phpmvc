@@ -61,7 +61,7 @@ class usuario {
     }
 
     public function setPassword($password): void {
-        $this->password = $passowrd;
+        $this->password = $password;
     }
 
     public function setRol($rol): void {
