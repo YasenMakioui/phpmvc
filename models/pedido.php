@@ -96,7 +96,8 @@ class pedido {
     }
 
     public function getOne() {
-        $productos = $this->db->query("SELECT * FROM pedidos WHERE usuario_id = {$this->getUsuario_id()}");
+        $productos = $this->db->query("SELECT * FROM pedidos WHERE id = {$this->getId()};");
+
         return $productos->fetch_object();
     }
 
@@ -107,6 +108,15 @@ class pedido {
                     
         $pedido = $this->db->query($sql);
         return $pedido->fetch_object();
+    }
+
+    public function getAllByUser() {
+        $sql = "SELECT * FROM pedidos "
+                    ."WHERE usuario_id = {$this->getUsuario_id()} ORDER BY id DESC;";
+                    
+        $pedido = $this->db->query($sql);
+        
+        return $pedido;
     }
 
     public function getProductosByPedido($id) {
